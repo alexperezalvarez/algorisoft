@@ -1,0 +1,40 @@
+{% extends 'list.html' %} 
+{% load static %}
+{% block head_list %}
+{% comment %} <script src="{% static 'product/js/list.js' %}"></script> {% endcomment %}
+{% endblock head_list %}
+{% block columns %}
+<tr>
+  <th scope="col" style="width: 10%">Nro</th>
+  <th scope="col" tyle="width: 20%">Nombre</th>
+  <th scope="col" tyle="width: 30%">Categoria</th>
+  <th scope="col" tyle="width: 20%">Imagen</th>
+  <th scope="col" tyle="width: 20%">Precio</th>
+  <th scope="col" tyle="width: 20%">Opciones</th>
+</tr>
+{% endblock columns %} 
+{% block rows %}
+{% comment %} No utilizo ajax, sino lo normal {% endcomment %}
+    {% for obj in object_list %}
+        <tr>
+            <td>{{ obj.id }}</td>
+            <td>{{ obj.name|title }}</td>
+            <td>{{ obj.cat.name|title }}</td>
+            <td class="text-center">
+{#                 {{ obj.image }}#}
+                <img src="{{ obj.get_image }}" class="img-fluid d-block mx-auto" style="width: 20px; height: 20px;">
+            </td>
+            <td>{{ obj.pvp }}</td>
+            <td class="text-center">
+                <a href="{% url 'erp:product_update' obj.id %}" class="btn btn-warning btn-xs btn-flat">
+                    <i class="fas fa-edit"></i>
+                </a>
+                <a href="{% url 'erp:product_delete' obj.id %}" class="btn btn-danger btn-xs btn-flat">
+                    <i class="fas fa-trash"></i>
+                </a>
+            </td>
+        </tr>
+    {% endfor %}
+{% endblock rows %}
+{% comment %} PAra que quite el ajax predeterminado que esta en el html que esta heredando {% endcomment %}
+{% block js %}{% endblock js %}

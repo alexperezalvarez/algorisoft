@@ -1,0 +1,36 @@
+{% extends 'list.html' %} 
+{% load static %}
+{% block head_list %}
+<script src="{% static 'category/js/list.js' %}"></script>
+{% endblock head_list %}
+{% block columns %}
+<tr>
+  <th scope="col" style="width: 10%">Nro</th>
+  <th scope="col" tyle="width: 20%">Nombre</th>
+  <th scope="col" tyle="width: 30%">Descripción</th>
+  <th scope="col" tyle="width: 20%">Opciones</th>
+</tr>
+{% endblock columns %} {% block rows %} 
+{% comment %} 
+voy a utilizar DataTable y ajax
+{% for c in object_list %}
+<tr>
+  <th scope="row">{{c.id}}</th>
+  <td>{{c.name}}</td>
+  <td>{{c.desc}}</td>
+  <td>
+    <a href="{% url 'erp:category_update' c.id %}" class="btn btn-warning btn-xs">
+      <i class="fas fa-edit"></i>
+    </a>
+
+    <a href="{% url 'erp:category_delete' c.id %}" class="btn btn-danger btn-xs">
+      <i class="fas fa-trash-alt"></i>
+    </a>
+  </td>
+</tr>
+{% endfor %} {% endcomment %}
+{% endblock rows %}
+{% comment %} llamo este bloque para que el padre no ejecute el js que tiene ahi {% endcomment %}
+{% block js %}
+
+{% endblock js %}
