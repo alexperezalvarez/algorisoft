@@ -26,3 +26,5 @@ En este repositorio encontrarás:
 ## ¿Cómo contribuir? 🤝
 
 ¡Tu contribución es bienvenida! Si tienes ejercicios adicionales, correcciones o sugerencias, siéntete libre de abrir un *issue* o enviar un *pull request*. ¡Juntos podemos hacer de este curso algo aún mejor!
+
+¡Diviértete aprendiendo con AlgoriSoft-curso! 🎉
